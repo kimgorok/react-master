@@ -3,7 +3,7 @@ import Router from "./Router";
 import { ReactQueryDevtools } from "react-query/devtools";
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -21,7 +21,6 @@ time, mark, audio, video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -52,7 +51,7 @@ table {
   box-sizing: border-box;
 }
 body {
-  font-family: 'Tangerine', cursive;
+  font-family: 'Dancing Script', cursive;
   background-color:${(props) => props.theme.bgColor};
   color:${(props) => props.theme.textColor};
   line-height: 2.0;

@@ -7,6 +7,8 @@ import { QueryClient, QueryClientProvider } from "react-query";
 
 const queryClient = new QueryClient();
 
+// App을 QueryClientProvider와 ThemeProvider로 감싸서 모든 곳에 적용함
+
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>

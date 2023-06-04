@@ -188,6 +188,7 @@ function Coin() {
         <Loader>Loading...</Loader>
       ) : (
         <>
+          <Link to={`/`}>Home</Link>
           <Overview>
             <OverviewItem>
               <span>Rank:</span>
@@ -225,7 +226,7 @@ function Coin() {
 
           <Routes>
             <Route path="chart" element={<Chart coinId={coinId!} />} />
-            <Route path="price" element={<Price />} />
+            <Route path="price" element={<Price coinId={coinId!} />} />
           </Routes>
         </>
       )}

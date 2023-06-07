@@ -65,23 +65,12 @@ a {
   color: inherit
 }
 `;
-
 function App() {
   return (
     <>
       <GlobalStyle />
-      <h2
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          flexDirection: "column",
-        }}
-      >
-        내가 가고싶은 나라들
-      </h2>
       <ToDoList />
     </>
   );
 }
-
 export default App;

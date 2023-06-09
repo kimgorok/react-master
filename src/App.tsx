@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { atom, useRecoilState } from "recoil";
 import styled from "styled-components";
+// before refactoring
 
 const Wrapper = styled(motion.div)`
   height: 100vh;

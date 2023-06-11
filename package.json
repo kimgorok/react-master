@@ -1,11 +1,16 @@
 {
+<<<<<<< HEAD
   "name": "react-master",
+=======
+  "name": "react-masterclass",
+>>>>>>> dcc53c6cafa8ac31378e5b15e3cc24d9d8524314
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+<<<<<<< HEAD
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.34",
     "@types/react": "^18.2.7",
@@ -22,6 +27,12 @@
     "recoil": "^0.7.7",
     "styled-components": "^5.3.11",
     "typescript": "^4.9.5",
+=======
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "styled-components": "^5.3.11",
+>>>>>>> dcc53c6cafa8ac31378e5b15e3cc24d9d8524314
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -47,11 +58,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+<<<<<<< HEAD
   },
   "devDependencies": {
     "@types/react-dom": "^18.2.4",
     "@types/react-helmet": "^6.1.6",
     "@types/react-query": "^1.2.9",
     "@types/styled-components": "^5.1.26"
+=======
+>>>>>>> dcc53c6cafa8ac31378e5b15e3cc24d9d8524314
   }
 }

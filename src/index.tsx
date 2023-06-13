@@ -3,7 +3,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router";
-import { createGlobalStyle } from "styled-components";
+import { ThemeProvider, createGlobalStyle } from "styled-components";
+import { theme } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -59,9 +60,9 @@ table {
 }
 body {
   width:480px;
-  font-weight: 300;
+  font-weight: bold;
   font-family: 'Source Sans Pro', sans-serif;
-  color:white;
+  color:${(props) => props.theme.white.darker};
   line-height: 1.2;
   background-color:black;
   overflow-x:hidden;
@@ -79,7 +80,9 @@ const client = new QueryClient();
 
 root.render(
   <QueryClientProvider client={client}>
-    <GlobalStyle />
-    <RouterProvider router={router} />
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </QueryClientProvider>
 );

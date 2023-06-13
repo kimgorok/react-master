@@ -1,33 +1,34 @@
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link, useMatch } from "react-router-dom";
 import styled from "styled-components";
 
 const Nav = styled.nav`
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
-  margin: 0 auto;
+  margin: auto;
 
   display: flex;
   justify-content: center;
-
   width: 100%;
-  font-size: 28px;
-  padding: 20px 60px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+
+  font-size: 1.5rem;
+  background-color: black;
   color: white;
+  z-index: 1;
 `;
 
 const Items = styled.ul`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 720px;
 `;
 
 const Item = styled.li`
   color: white;
   position: relative;
-  display: flex;
-  justify-content: flex-end;
 `;
 
 const Circle = styled(motion.span)`
@@ -35,7 +36,7 @@ const Circle = styled(motion.span)`
   width: 5px;
   height: 5px;
   border-radius: 5px;
-  bottom: -5px;
+  bottom: -10px;
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -43,11 +44,9 @@ const Circle = styled(motion.span)`
 `;
 
 function Header() {
-  // const navAnimation = useAnimation();
   const popularMatch = useMatch("/");
   const comingSoonMatch = useMatch("coming-soon");
   const nowPlayingMatch = useMatch("now-playing");
-
   return (
     <>
       <Nav>

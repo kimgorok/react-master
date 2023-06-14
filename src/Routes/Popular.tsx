@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import styled from "styled-components";
 import {
   IAPIResponse,
   IMovieDetail,
@@ -11,140 +10,23 @@ import {
 import { AnimatePresence, motion, useScroll } from "framer-motion";
 import { PathMatch, useMatch, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  min-height: 100vh;
-  width: 100vw;
-  padding: 70px;
-  background-color: ${(props) => props.theme.black.veryDark};
-  position: relative;
-`;
-
-const PopularList = styled(motion.div)`
-  display: grid;
-  gap: 50px;
-  grid-template-columns: repeat(3, 1fr);
-  width: 720px;
-  margin-top: 50px;
-`;
-
-const PopularBox = styled(motion.div)`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-`;
-
-const Img = styled(motion.div)<{ bgphoto: string }>`
-  background-image: url(${(props) => props.bgphoto});
-  background-size: cover;
-  background-position: center center;
-  border-radius: 15px;
-  height: 250px;
-  width: 175px;
-  cursor: pointer;
-`;
-
-const Boxanimation = {
-  start: {
-    scale: 0.5,
-  },
-  end: {
-    scale: 1,
-  },
-};
-
-const Title = styled.div`
-  margin-top: 10px;
-  text-align: center;
-  font-size: 1.5rem;
-`;
-
-const popularVariants = {
-  hidden: {
-    opacity: 0,
-    scale: 0,
-  },
-  visible: (index: number) => ({
-    opacity: 1,
-    scale: 1,
-    transition: {
-      delay: index * 0.25,
-    },
-  }),
-};
-
-const ImgVariants = {
-  normal: {
-    scale: 1,
-  },
-  hover: {
-    scale: 1.1,
-    y: -20,
-    transition: { duration: 0.1 },
-  },
-};
-
-const BigMovie = styled(motion.div)`
-  position: absolute;
-  width: 640px;
-  height: auto;
-  margin: auto;
-  background-color: rgb(20, 20, 20);
-  border-radius: 15px;
-  overflow: hidden;
-`;
-
-const Overlay = styled(motion.div)`
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-`;
-
-const BigCover = styled.div`
-  width: 100%;
-  background-size: cover;
-  background-position: center center;
-  height: 600px;
-`;
-
-const XButton = styled.svg`
-  cursor: pointer;
-  scale: 0.05;
-  position: absolute;
-  top: -500px;
-  right: -500px;
-  opacity: 0.5;
-  z-index: 1;
-`;
-
-const BigTitle = styled.div`
-  width: 100%;
-  font-size: 2.5rem;
-  position: relative;
-  top: -100px;
-  padding: 20px;
-`;
-
-const BigOverView = styled.div`
-  margin-top: -100px;
-  margin-left: 10px;
-  padding: 10px;
-
-  font-weight: lighter;
-  color: ${(props) => props.theme.white.lighter};
-`;
-
-const BigOthers = styled.div`
-  position: relative;
-  left: 0px;
-  padding: 10px;
-  font-weight: normal;
-`;
+import {
+  BigCover,
+  BigMovie,
+  BigOthers,
+  BigOverView,
+  BigTitle,
+  Box,
+  Boxanimation,
+  Img,
+  ImgVariants,
+  List,
+  ListVariants,
+  Overlay,
+  Title,
+  Wrapper,
+  XButton,
+} from "../Components/Components";
 
 function Popular() {
   const { scrollY } = useScroll();
@@ -183,11 +65,11 @@ function Popular() {
 
   return (
     <Wrapper>
-      <PopularList variants={popularVariants}>
+      <List variants={ListVariants}>
         {data?.results.map((movie, popularity) => (
-          <PopularBox
+          <Box
             key={movie.id}
-            variants={popularVariants}
+            variants={ListVariants}
             custom={popularity}
             initial="hidden"
             animate="visible"
@@ -211,9 +93,9 @@ function Popular() {
               bgphoto={makeImagePath(movie.poster_path)}
             />
             <Title>{movie.title}</Title>
-          </PopularBox>
+          </Box>
         ))}
-      </PopularList>
+      </List>
       <AnimatePresence>
         {moviePathMatch ? (
           <>
@@ -249,32 +131,30 @@ function Popular() {
                   <BigTitle>{clickedImg.title}</BigTitle>
                   <BigOverView>{clickedImg.overview}</BigOverView>
                   <BigOthers>
-                    <BigOthers>
-                      Budget: $
-                      {movieDetail && movieDetail.budget
-                        ? movieDetail.budget.toLocaleString(undefined, {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2,
-                          })
-                        : ""}
-                      <br />
-                      Revenue: $
-                      {movieDetail && movieDetail.revenue
-                        ? movieDetail.revenue.toLocaleString(undefined, {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2,
-                          })
-                        : ""}
-                      <br />
-                      Runtime: {movieDetail?.runtime} minutes
-                      <br />
-                      Rating:
-                      {movieDetail && movieDetail.vote_average
-                        ? movieDetail.vote_average.toFixed(1)
-                        : ""}
-                      <br />
-                      Homepage: {movieDetail?.homepage}
-                    </BigOthers>
+                    Budget: $
+                    {movieDetail && movieDetail.budget
+                      ? movieDetail.budget.toLocaleString(undefined, {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })
+                      : ""}
+                    <br />
+                    Revenue: $
+                    {movieDetail && movieDetail.revenue
+                      ? movieDetail.revenue.toLocaleString(undefined, {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })
+                      : ""}
+                    <br />
+                    Runtime: {movieDetail?.runtime} minutes
+                    <br />
+                    Rating:
+                    {movieDetail && movieDetail.vote_average
+                      ? movieDetail.vote_average.toFixed(1)
+                      : ""}
+                    <br />
+                    Homepage: {movieDetail?.homepage}
                   </BigOthers>
                 </>
               )}

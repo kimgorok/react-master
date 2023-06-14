@@ -63,8 +63,8 @@ body {
   font-weight: bold;
   font-family: 'Source Sans Pro', sans-serif;
   color:${(props) => props.theme.white.darker};
-  line-height: 1.2;
-  background-color:black;
+  line-height: 1;
+  background-color: ${(props) => props.theme.black.veryDark};
   overflow-x:hidden;
 }
 a {

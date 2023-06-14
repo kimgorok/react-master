@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   min-height: 100vh;
   width: 100vw;
   padding: 70px;
-
+  background-color: ${(props) => props.theme.black.veryDark};
   position: relative;
 `;
 
@@ -36,15 +36,24 @@ const ComingSoonBox = styled(motion.div)`
   flex-direction: column;
 `;
 
-const Img = styled(motion.div)<{ bgPhoto: string }>`
-  background-image: url(${(props) => props.bgPhoto});
+const Img = styled(motion.div)<{ bgphoto: string }>`
+  background-image: url(${(props) => props.bgphoto});
   background-size: cover;
   background-position: center center;
   border-radius: 15px;
   height: 250px;
-  width: 150px;
+  width: 175px;
   cursor: pointer;
 `;
+
+const Boxanimation = {
+  start: {
+    scale: 0.5,
+  },
+  end: {
+    scale: 1,
+  },
+};
 
 const Title = styled.div`
   margin-top: 10px;
@@ -77,7 +86,7 @@ const ImgVariants = {
   },
 };
 
-export const BigMovie = styled(motion.div)`
+const BigMovie = styled(motion.div)`
   position: absolute;
   width: 640px;
   height: auto;
@@ -98,10 +107,10 @@ const Overlay = styled(motion.div)`
 
 const XButton = styled.svg`
   cursor: pointer;
-  transform: scale(0.05);
+  scale: 0.05;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: -500px;
+  right: -500px;
   opacity: 0.5;
   z-index: 1;
 `;
@@ -186,13 +195,23 @@ function ComingSoon() {
             initial="hidden"
             animate="visible"
           >
+            <motion.path
+              variants={Boxanimation}
+              initial="start"
+              animate="end"
+              transition={{
+                type: "spring",
+                stiffness: 10,
+                damping: 0,
+              }}
+            ></motion.path>
             <Img
               layoutId={movie.id + ""}
               onClick={() => onClickImage(movie.id)}
               variants={ImgVariants}
               initial="normal"
               whileHover="hover"
-              bgPhoto={makeImagePath(movie.poster_path)}
+              bgphoto={makeImagePath(movie.poster_path)}
             />
             <Title>{movie.title}</Title>
           </ComingSoonBox>

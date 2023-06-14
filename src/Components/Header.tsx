@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Link, useMatch } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 const Nav = styled.nav`
@@ -15,8 +15,8 @@ const Nav = styled.nav`
   padding-bottom: 30px;
 
   font-size: 1.5rem;
-  background-color: black;
-  color: white;
+  background-color: ${(props) => props.theme.black.veryDark};
+  color: ${(props) => props.theme.white.lighter};
   z-index: 1;
 `;
 
@@ -27,7 +27,7 @@ const Items = styled.ul`
 `;
 
 const Item = styled.li`
-  color: white;
+  color: ${(props) => props.theme.white.lighter};
   position: relative;
 `;
 
@@ -44,26 +44,35 @@ const Circle = styled(motion.span)`
 `;
 
 function Header() {
-  const popularMatch = useMatch("/");
-  const comingSoonMatch = useMatch("coming-soon");
-  const nowPlayingMatch = useMatch("now-playing");
+  const location = useLocation();
+
   return (
     <>
       <Nav>
         <Items>
           <Item>
             <Link to="/">
-              POPULAR {popularMatch && <Circle layoutId="circle" />}
+              POPULAR
+              {(location.pathname === "/" ||
+                location.pathname.startsWith("/popular")) && (
+                <Circle layoutId="circle" />
+              )}
             </Link>
           </Item>
           <Item>
-            <Link to="coming-soon">
-              COMING SOON {comingSoonMatch && <Circle layoutId="circle" />}
+            <Link to="coming-soon/">
+              COMING SOON
+              {location.pathname.startsWith("/coming-soon") && (
+                <Circle layoutId="circle" />
+              )}
             </Link>
           </Item>
           <Item>
-            <Link to="now-playing">
-              NOW PLAYING {nowPlayingMatch && <Circle layoutId="circle" />}
+            <Link to="now-playing/">
+              NOW PLAYING
+              {location.pathname.startsWith("/now-playing") && (
+                <Circle layoutId="circle" />
+              )}
             </Link>
           </Item>
         </Items>

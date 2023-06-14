@@ -1,7 +1,7 @@
 import App from "./App";
 import { createBrowserRouter } from "react-router-dom";
 import ComingSoon from "./Routes/ComingSoon";
-import Popular, { BigMovie } from "./Routes/Popular";
+import Popular from "./Routes/Popular";
 import NowPlaying from "./Routes/NowPlaying";
 
 export const router = createBrowserRouter([

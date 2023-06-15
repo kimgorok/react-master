@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
+// 최대 높이가 아닌 최소 높이를 100으로 해서 페이지 크기가 100vh가 넘어가도 스타일 적용
 export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -11,6 +12,7 @@ export const Wrapper = styled.div`
   position: relative;
 `;
 
+// grid로 한 줄에 3개씩 배치. gap은 50px.
 export const List = styled(motion.div)`
   display: grid;
   gap: 50px;
@@ -25,6 +27,8 @@ export const Box = styled(motion.div)`
   flex-direction: column;
 `;
 
+// props로 bgphoto에 url을 전달
+// 배경 이미지를 중앙에 두고 이미지가 작아도 꽉 차게 함
 export const Img = styled(motion.div)<{ bgphoto: string }>`
   background-image: url(${(props) => props.bgphoto});
   background-size: cover;
@@ -35,6 +39,7 @@ export const Img = styled(motion.div)<{ bgphoto: string }>`
   cursor: pointer;
 `;
 
+// 박스가 처음 등장 할 때의 애니메이션
 export const Boxanimation = {
   start: {
     scale: 0.5,
@@ -50,11 +55,8 @@ export const Title = styled.div`
   font-size: 1.5rem;
 `;
 
+// List 요소들이 0.25초 간격으로 하나씩 뿅 등장하게 하기 위해서
 export const ListVariants = {
-  hidden: {
-    opacity: 0,
-    scale: 0,
-  },
   visible: (index: number) => ({
     opacity: 1,
     scale: 1,
@@ -64,6 +66,7 @@ export const ListVariants = {
   }),
 };
 
+// 이미지에 마우스를 올리면 크기가 커지면서 0.1초만에 위로 올라감
 export const ImgVariants = {
   normal: {
     scale: 1,
@@ -75,6 +78,7 @@ export const ImgVariants = {
   },
 };
 
+// 이미지를 클릭하면 등장하는 모달
 export const BigMovie = styled(motion.div)`
   position: absolute;
   width: 640px;
@@ -101,7 +105,6 @@ export const XButton = styled.svg`
   top: -500px;
   right: -500px;
   opacity: 0.5;
-  z-index: 1;
 `;
 
 export const BigCover = styled.div`

@@ -4,9 +4,7 @@ import { RecoilRoot } from "recoil";
 import { ThemeProvider } from "styled-components";
 import App from "./App";
 import { darkTheme } from "./theme";
-
 import { createGlobalStyle } from "styled-components";
-
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
 html, body, div, span, applet, object, iframe,
@@ -62,8 +60,8 @@ table {
 body {
   font-weight: 300;
   font-family: 'Source Sans Pro', sans-serif;
-  background-color:black;
-  color:white;
+  background-color:${(props) => props.theme.bgColor};
+  color:black;
   line-height: 1.2;
 }
 a {
@@ -71,7 +69,6 @@ a {
   color:inherit;
 }
 `;
-
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
